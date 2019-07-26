@@ -11,7 +11,7 @@ var numGuesses = 10;
 
 const audioContainer = document.getElementById("audioContainer");
 const audioContainer2 = document.getElementById("audioContainer2");
-const audioContainer3 = document.getElementById("audioContainer2");
+const audioContainer3 = document.getElementById("audioContainer3");
 
 
 var directionsText = document.getElementById("directions-text");
