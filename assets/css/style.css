@@ -1,0 +1,14 @@
+body{
+    background-image: url("../images/background.jpg");
+  }
+p{
+    font-weight: bold;
+    font-family: 'Anton', sans-serif;
+    font-size: 42px;
+    padding:40px;
+    color: lightcoral;
+}
+.hidden{
+    letter-spacing: 20px;
+    margin-top:25%;
+}

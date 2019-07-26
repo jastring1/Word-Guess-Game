@@ -1,14 +1,17 @@
-var answerKey = ["words", "letters", "theme"];
+var answerKey = ["cowboys", "patriots", "eagles", "packers", "raiders", "giants", "browns", "steelers", "bears", "seahawks",
+    "fortyniners", "broncos", "chiefs", "vikings", "redskins", "panthers", "saints", "dolphins", "jets", "bills", "cardinals", "lions",
+    "falcons", "rams", "ravens", "colts", "texans", "chargers", "jaguars", "buccaneers", "bengals", "titans"];
 var randomWord;
 var hiddenWord = "";
 var wins = 0;
 var losses = 0;
-var userGuess;
+var userGuess = "";
 var guessedLetters = "";
 var numGuesses = 10;
 
-var invalidSound = new Audio("buzzer.mp3");
-var correctSound = new Audio("bell.mp3");
+const audioContainer = document.getElementById("audioContainer");
+const audioContainer2 = document.getElementById("audioContainer2");
+const audioContainer3 = document.getElementById("audioContainer2");
 
 
 var directionsText = document.getElementById("directions-text");
@@ -35,14 +38,18 @@ document.onkeyup = function (event) {
 
     if ((hiddenWord.includes(userGuess)) || guessedLetters.includes(userGuess)) {
         console.log("letter already guessed");
+
+
+        audioContainer.play();
     }
     else {
         if (randomWord.includes(userGuess) === false) {
             guessedLetters = guessedLetters + userGuess;
             numGuesses--;
+            audioContainer2.play();
         }
         if (randomWord.includes(userGuess)) {
-        
+
             /*
             for (i = 0; i < randomWord.length; i++) {
                 if (userGuess === randomWord[i]) {
@@ -53,17 +60,29 @@ document.onkeyup = function (event) {
 
 
     }
-    if (numGuesses === 0) {
-        losses++;
+    if (hiddenWord === randomWord) {
+        wins++;
         numGuesses = 10;
         guessedLetters = "";
-        userGuess="";
-        hiddenWord="";
+        userGuess = "";
+        hiddenWord = "";
         randomWord = answerKey[Math.floor(Math.random() * answerKey.length)];
         for (i = 0; i < randomWord.length; i++) {
             hiddenWord = hiddenWord + "_";
         }
-        
+    }
+    if (numGuesses === 0) {
+        audioContainer3.play();
+        losses++;
+        numGuesses = 10;
+        guessedLetters = "";
+        userGuess = "";
+        hiddenWord = "";
+        randomWord = answerKey[Math.floor(Math.random() * answerKey.length)];
+        for (i = 0; i < randomWord.length; i++) {
+            hiddenWord = hiddenWord + "_";
+        }
+
 
     }
 
