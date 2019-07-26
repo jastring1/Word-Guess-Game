@@ -30,7 +30,7 @@ hiddenArray.textContent = hiddenWord;
 winsText.textContent = "wins: " + wins;
 lossesText.textContent = "losses: " + losses;
 userGuessText.textContent = "You chose: " + userGuess;
-guessArray.textContent = "Incorrect Letters: " + guessedLetters;
+guessArray.textContent = "Incorrect: " + guessedLetters;
 
 
 document.onkeyup = function (event) {
@@ -93,6 +93,6 @@ document.onkeyup = function (event) {
     lossesText.textContent = "losses: " + losses;
     leftText.textContent = "Guesses Left: " + numGuesses;
     hiddenArray.textContent = hiddenWord;
-    guessArray.textContent = "Incorrect Letters: " + guessedLetters;
+    guessArray.textContent = "Incorrect: " + guessedLetters;
 
 };
