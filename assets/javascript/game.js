@@ -23,7 +23,7 @@ var hiddenArray = document.getElementById("hidden-text");
 var guessArray = document.getElementById("array-text");
 
 randomWord = answerKey[Math.floor(Math.random() * answerKey.length)];
-for (i = 0; i < randomWord.length; i++) {
+for (var i = 0; i < randomWord.length; i++) {
     hiddenWord = hiddenWord + "_";
 }
 hiddenArray.textContent = hiddenWord;
@@ -36,30 +36,27 @@ guessArray.textContent = "Incorrect: " + guessedLetters;
 document.onkeyup = function (event) {
     userGuess = event.key;
 
-    if ((hiddenWord.includes(userGuess)) || guessedLetters.includes(userGuess)) {
+   if (randomWord.includes(userGuess))
+   {
+       for(var i=0;i<randomWord.length;i++){
+           if (userGuess === randomWord[i]){
+               hiddenWord[i] = userGuess;
+               console.log(hiddenWord);
+           }
+       }
+   }
+
+    else if ((hiddenWord.includes(userGuess)) || guessedLetters.includes(userGuess)) {
         console.log("letter already guessed");
-
-
         audioContainer.play();
     }
-    else {
-        if (randomWord.includes(userGuess) === false) {
-            guessedLetters = guessedLetters + userGuess;
-            numGuesses--;
-            audioContainer2.play();
-        }
-        if (randomWord.includes(userGuess)) {
-
-            /*
-            for (i = 0; i < randomWord.length; i++) {
-                if (userGuess === randomWord[i]) {
-                    hiddenWord[i] = randomWord[i];
-                }
-            }*/
-        }
-
-
+    else  {
+        guessedLetters = guessedLetters + userGuess;
+        numGuesses--;
+        audioContainer2.play();
     }
+    
+
     if (hiddenWord === randomWord) {
         wins++;
         numGuesses = 10;
@@ -67,7 +64,7 @@ document.onkeyup = function (event) {
         userGuess = "";
         hiddenWord = "";
         randomWord = answerKey[Math.floor(Math.random() * answerKey.length)];
-        for (i = 0; i < randomWord.length; i++) {
+        for (var i = 0; i < randomWord.length; i++) {
             hiddenWord = hiddenWord + "_";
         }
     }
@@ -79,7 +76,7 @@ document.onkeyup = function (event) {
         userGuess = "";
         hiddenWord = "";
         randomWord = answerKey[Math.floor(Math.random() * answerKey.length)];
-        for (i = 0; i < randomWord.length; i++) {
+        for (var i = 0; i < randomWord.length; i++) {
             hiddenWord = hiddenWord + "_";
         }
 
