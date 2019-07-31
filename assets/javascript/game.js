@@ -12,6 +12,7 @@ var numGuesses = 10;
 const audioContainer = document.getElementById("audioContainer");
 const audioContainer2 = document.getElementById("audioContainer2");
 const audioContainer3 = document.getElementById("audioContainer3");
+const audioContainer4 = document.getElementById("audioContainer4");
 
 var directionsText = document.getElementById("directions-text");
 var userGuessText = document.getElementById("userguess-text");
@@ -46,6 +47,7 @@ function checkForLetters(){
 }
 function checkForWin(){
     if (hiddenWord === randomWord) {
+        audioContainer4.play();
         wins++;
         numGuesses = 10;
         guessedLetters = "";
@@ -94,7 +96,6 @@ guessArray.textContent = "Incorrect: " + guessedLetters;
 
 document.onkeyup = function (event) {
     userGuess = event.key.toLowerCase();
-
     checkForLetters();
     checkForWin();
     checkForLoss();
